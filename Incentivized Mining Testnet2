@@ -11,6 +11,7 @@ source $HOME/.cargo/env
 
 sudo apt install git
 git clone https://github.com/AleoHQ/snarkOS.git --depth 1
+ufw allow 4132/tcp && ufw allow 3032/tcp
 cd snarkOS
 ./testnet2_ubuntu.sh
 
@@ -20,7 +21,7 @@ cargo run --release -- experimental new_account  #bu kodu girdiğinizde ekranda 
 tmux
 ./run-miner.sh
 
-#21 numaradaki kodu girdiğimizde bizden bir adres girmemizi istiyor. 19 numaradaki kodu girdiğimizde bize verdiği aleo1...... keyini bu ekranda giriyoruz.
+#22 numaradaki kodu girdiğimizde bizden bir adres girmemizi istiyor. 20 numaradaki kodu girdiğimizde bize verdiği aleo1...... keyini bu ekranda giriyoruz.
 #tmux dan çıkmak için ctrl+d b ye basıyoruz
 
 #Tmux kontrol etme
@@ -28,7 +29,7 @@ tmux
 tmux ls
 tmux attach -t 0
 
-#29 numaradaki işlemde '0' sizin tmux pencerenizin ismi bunuda tmux ls yazdığınızda getirdiği cevapta en başa bulabilirsiniz.
+#30 numaradaki işlemde '0' sizin tmux pencerenizin ismi bunuda tmux ls yazdığınızda getirdiği cevapta en başa bulabilirsiniz.
 
 
 #Node Kontrol
@@ -50,12 +51,12 @@ https://nodes.guru/aleo/aleochecker
 
 grep "\-\-miner aleo" /etc/systemd/system/aleod-miner.service
 
-#51 numaradaki kodu girdiğinizde 21 numarada girdiğiniz adresi size çıktı olarak vermeli vermediyse adresiniz değişmiştir ve de şu işlemleri yapmanız gerekiyor.
+#52 numaradaki kodu girdiğinizde 22 numarada girdiğiniz adresi size çıktı olarak vermeli vermediyse adresiniz değişmiştir ve de şu işlemleri yapmanız gerekiyor.
 
 
 sudo nano /etc/systemd/system/aleod-miner.service
 
-#56 numaralı kod ile çıkan ekranda ExecStart=/usr/bin/snarkos --miner YOURADDRESS bölümünü bulup YOURADDRESS kısmını (burada 53teki adres yazar büyük ihtimalle) kendi adresinizle değiştirin ctrs+x y enter a basarak kaydedin
+#57 numaralı kod ile çıkan ekranda ExecStart=/usr/bin/snarkos --miner YOURADDRESS bölümünü bulup YOURADDRESS kısmını (burada 53teki adres yazar büyük ihtimalle) kendi adresinizle değiştirin ctrs+x y enter a basarak kaydedin
 
 systemctl daemon-reload
 systemctl start aleod-miner
