@@ -19,10 +19,10 @@ cd snarkOS
 
 cargo run --release -- experimental new_account  #bu kodu girdiğinizde ekranda size verilen cevabı kesinlikle saklayın!
 tmux
-./run-miner.sh
+./run-miner.sh  #22 numaradaki kodu girdiğimizde bizden bir adres girmemizi istiyor. 20 numaradaki kodu girdiğimizde bize verdiği aleo1...... keyini bu ekranda giriyoruz ve biraz çalıştıktan sonra ctrl+c ile durdurun ve 23 sıradaki kodla işleme devam edin
 nano run-miner.sh #adresi yapıştırdıktan sonra ctrl+x y enter a basıyoruz
 
-#22 numaradaki kodu girdiğimizde bizden bir adres girmemizi istiyor. 20 numaradaki kodu girdiğimizde bize verdiği aleo1...... keyini bu ekranda giriyoruz.
+
 #tmux dan çıkmak için ctrl+d b ye basıyoruz
 
 #Tmux kontrol etme
@@ -37,7 +37,7 @@ tmux attach -t 0
 
 #1Node Üzerinden
 
-ufw allow 4132/tcp && ufw allow 3032/tcp
+
 sudo apt install jq
 wget -O snarkos_monitor.sh https://api.nodes.guru/snarkos_monitor.sh && chmod +x snarkos_monitor.sh && ./snarkos_monitor.sh
 ./snarkos_monitor.sh 127.0.0.1:3032
@@ -48,4 +48,4 @@ https://nodes.guru/aleo/aleochecker
 
 #IP Adrress bölümüne vpsinizi Ip adresini giriyorsunuz.
 
-Video: 
+Video: https://youtu.be/6N0gJ046Rq4
