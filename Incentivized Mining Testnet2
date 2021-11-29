@@ -20,6 +20,7 @@ cd snarkOS
 cargo run --release -- experimental new_account  #bu kodu girdiğinizde ekranda size verilen cevabı kesinlikle saklayın!
 tmux
 ./run-miner.sh
+nano run-miner.sh #adresi yapıştırdıktan sonra ctrl+x y enter a basıyoruz
 
 #22 numaradaki kodu girdiğimizde bizden bir adres girmemizi istiyor. 20 numaradaki kodu girdiğimizde bize verdiği aleo1...... keyini bu ekranda giriyoruz.
 #tmux dan çıkmak için ctrl+d b ye basıyoruz
@@ -46,20 +47,5 @@ wget -O snarkos_monitor.sh https://api.nodes.guru/snarkos_monitor.sh && chmod +x
 https://nodes.guru/aleo/aleochecker
 
 #IP Adrress bölümüne vpsinizi Ip adresini giriyorsunuz.
-
-#Mining adresinizi kontorl etmek
-
-grep "\-\-miner aleo" /etc/systemd/system/aleod-miner.service
-
-#52 numaradaki kodu girdiğinizde 22 numarada girdiğiniz adresi size çıktı olarak vermeli vermediyse adresiniz değişmiştir ve de şu işlemleri yapmanız gerekiyor.
-
-
-sudo nano /etc/systemd/system/aleod-miner.service
-
-#57 numaralı kod ile çıkan ekranda ExecStart=/usr/bin/snarkos --miner YOURADDRESS bölümünü bulup YOURADDRESS kısmını (burada 53teki adres yazar büyük ihtimalle) kendi adresinizle değiştirin ctrs+x y enter a basarak kaydedin
-
-systemctl daemon-reload
-systemctl start aleod-miner
-
 
 Video: 
