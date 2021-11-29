@@ -11,7 +11,7 @@ source $HOME/.cargo/env
 
 sudo apt install git
 git clone https://github.com/AleoHQ/snarkOS.git --depth 1
-ufw allow 4132/tcp && ufw allow 3032/tcp
+sudo apt install ufw && ufw allow 4132/tcp && ufw allow 3032/tcp
 cd snarkOS
 ./testnet2_ubuntu.sh
 
