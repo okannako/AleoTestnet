@@ -1,0 +1,63 @@
+#Güncellemeler
+
+apt update
+sudo apt install curl
+
+#Rust Kurulum
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+
+#Aleo Kurulum
+
+git clone https://github.com/AleoHQ/snarkOS.git --depth 1
+cd snarkOS
+./testnet2_ubuntu.sh
+
+#Mining Node
+
+cargo run --release -- experimental new_account  #bu kodu girdiğinizde ekranda size verilen cevabı kesinlikle saklayın!
+tmux
+./run-miner.sh
+
+#20 numaradaki kodu girdiğimizde bizden bir adres girmemizi istiyor. 18 numaradaki kodu girdiğimizde bize verdiği aleo1...... keyini bu ekranda giriyoruz.
+#tmux dan çıkmak için ctrl+d b ye basıyoruz
+
+#Tmux kontrol etme
+
+tmux ls
+tmux attach -t 0
+
+#28 numaradaki işlemde '0' sizin tmux pencerenizin ismi bunuda tmux ls yazdığınızda getirdiği cevapta en başa bulabilirsiniz.
+
+
+#Node Kontrol
+
+#1Node Üzerinden
+
+ufw allow 4132/tcp && ufw allow 3032/tcp
+sudo apt install jq
+wget -O snarkos_monitor.sh https://api.nodes.guru/snarkos_monitor.sh && chmod +x snarkos_monitor.sh && ./snarkos_monitor.sh
+./snarkos_monitor.sh 127.0.0.1:3032
+
+#2Site Üzerinden
+
+https://nodes.guru/aleo/aleochecker
+
+#IP Adrress bölümüne vpsinizi Ip adresini giriyorsunuz.
+
+#Mining adresinizi kontorl etmek
+
+grep "\-\-miner aleo" /etc/systemd/system/aleod-miner.service
+
+#50 numaradaki kodu girdiğinizde 20 numarada girdiğiniz adresi size çıktı olarak vermeli vermediyse adresiniz değişmiştir ve de şu işlemleri yapmanız gerekiyor.
+
+
+sudo nano /etc/systemd/system/aleod-miner.service
+
+#55 numaralı kod ile çıkan ekranda ExecStart=/usr/bin/snarkos --miner YOURADDRESS bölümünü bulup YOURADDRESS kısmını (burada 53teki adres yazar büyük ihtimalle) kendi adresinizle değiştirin ctrs+x y enter a basarak kaydedin
+
+systemctl daemon-reload
+systemctl start aleod-miner
+
+
+Video: 
